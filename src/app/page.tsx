@@ -1,8 +1,15 @@
+import Hero from "@/components/home/Hero";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
+import SkillsStrip from "@/components/home/SkillsStrip";
+import CTASection from "@/components/home/CTASection";
+
 export default function HomePage() {
   return (
-    <main>
-      <h1>Portfolio Home</h1>
-      <p>This is the new portfolio foundation.</p>
-    </main>
+    <>
+      <Hero />
+      <SkillsStrip />
+      <FeaturedProjects />
+      <CTASection />
+    </>
   );
 }
