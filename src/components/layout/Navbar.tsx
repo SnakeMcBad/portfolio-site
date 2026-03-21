@@ -19,7 +19,7 @@ export default function Navbar() {
     <header className="navbar">
       <Container className="navbar-inner">
         <Link href="/" className="brand">
-          Terry Al
+          Mustafa (Terry) Alghanimi
         </Link>
 
         <nav className="nav-links" aria-label="Primary">

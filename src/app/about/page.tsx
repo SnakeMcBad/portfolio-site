@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import Reveal from "@/components/shared/Reveal";
+import Timeline from "@/components/about/Timeline";
 
 export default function AboutPage() {
   return (
@@ -9,9 +10,10 @@ export default function AboutPage() {
           <Reveal>
             <h1>About</h1>
             <p>
-              I am building toward a stronger software engineering career while working
-              through my B.S. in Computer Science, with a focus on React, Next.js,
-              frontend systems, interactivity, and product-minded implementation.
+              I am a full-stack software developer with experience across frontend,
+              backend, automation, plugins, and cloud-supported systems. My background
+              includes building with Node.js, React, Next, PowerShell, Python, PHP, HTML,
+              CSS, MongoDB, SQL, GitHub, and AWS, while continuing my path in computer science.
             </p>
           </Reveal>
         </Container>
@@ -22,28 +24,31 @@ export default function AboutPage() {
           <div className="simple-grid">
             <Reveal>
               <div className="about-panel">
-                <h3>What I focus on</h3>
+                <h3>Technical background</h3>
                 <p>
-                  I care about more than getting code to run. I care about structure,
-                  readability, UX logic, tradeoffs, and whether a project reflects real
-                  engineering judgment instead of tutorial-level assembly.
+                  My work has included automation, deployment support, plugin development,
+                  backend and data-layer work, frontend implementation, and performance-focused
+                  system support. I enjoy projects that test my technical problem solving skills 
+                  and help causes that I believe in!
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.08}>
               <div className="about-panel">
-                <h3>What I am building toward</h3>
+                <h3>Career direction</h3>
                 <p>
-                  I want roles where I can contribute to serious product work, deepen
-                  my frontend and full-stack skill set, and keep growing through projects
-                  that require actual technical judgment.
+                  I want to keep growing as a software engineer by entering the Cybersecurity field.
+                  I am working on my Bachelor's in Computer Science as well as my Security+ certificate. 
+                  I use this portfolio as a way to express my solo progress and journey as a developer.
                 </p>
               </div>
             </Reveal>
           </div>
         </Container>
       </section>
+      
+      <Timeline />
     </>
   );
 }

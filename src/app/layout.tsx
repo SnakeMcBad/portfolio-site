@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Terry Al | Software Engineer",
+  title: "Mustafa (Terry) Alghanimi",
   description:
     "Portfolio and engineering case studies focused on interactive web development, architecture, and product-minded problem solving.",
 };

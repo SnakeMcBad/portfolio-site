@@ -10,11 +10,10 @@ export default function CTASection() {
           <div className="cta-panel">
             <div className="cta-row">
               <div>
-                <h3>Looking for an engineer who can explain the why, not just the what?</h3>
+                <h3>Thank you for making it to the bottom</h3>
                 <p>
-                  Start with the chatroom plugin case study. It is the clearest
-                  example of my current thinking around architecture, UX, constraints,
-                  and product-minded implementation.
+                  If you have not done so yet, please look through my case study on the chat platform I created! <br></br>
+                  If you have any questions or opportunities for me, don't hesitate to contact me!
                 </p>
               </div>
 

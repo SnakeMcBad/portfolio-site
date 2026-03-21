@@ -22,15 +22,14 @@ export default function ContactPage() {
             <Reveal>
               <div className="contact-panel">
                 <h3>Email</h3>
-                <p>your-email@example.com</p>
+                <p>terryal@terryal.com</p>
               </div>
             </Reveal>
 
             <Reveal delay={0.08}>
               <div className="contact-panel">
                 <h3>Links</h3>
-                <p>GitHub: github.com/yourusername</p>
-                <p>LinkedIn: linkedin.com/in/yourusername</p>
+                <p>LinkedIn: https://www.linkedin.com/in/mustafa-alghanimi-87272a164/</p>
               </div>
             </Reveal>
           </div>

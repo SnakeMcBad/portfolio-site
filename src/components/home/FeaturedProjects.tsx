@@ -12,9 +12,9 @@ export default function FeaturedProjects() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Selected Work"
-            title="Projects built around real constraints"
-            description="This portfolio is not meant to be a pile of random experiments. It is meant to show how I think, structure work, and build products with actual tradeoffs in mind."
+            eyebrow="Projects"
+            title="Software and Platform work"
+            description="A mix of frontend, backend, automation, and integration work drawn from real development experience, with an emphasis on solo-work, practical implementation, maintainable structure, and full-stack problem solving."
           />
         </Reveal>
 
