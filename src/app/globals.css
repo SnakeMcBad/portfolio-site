@@ -699,6 +699,7 @@ main {
   .timeline-line-start,
   .timeline-line-end {
     left: 10px;
+    height: 70%
   }
 
   .timeline-item {
