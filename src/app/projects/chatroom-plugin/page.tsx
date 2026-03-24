@@ -8,17 +8,16 @@ export default function ChatroomCaseStudyPage() {
       <section className="case-study-hero">
         <Container>
           <Reveal>
-            <span className="eyebrow">Flagship Case Study</span>
-            <h1 className="section-title">Real-Time WordPress Chatroom Plugin</h1>
+            <span className="eyebrow">Case Study</span>
+            <h1 className="section-title">Wordpress Text, Audio, and Video Communications Plugin</h1>
             <p className="section-description">
-              A Discord-inspired chat experience designed for a WordPress-based community,
-              focused on permissions, moderation, state-heavy UI behavior, and a more native
-              product feel than an off-the-shelf embed could provide.
+              A full-stack communication platform in the form of a plugin. Used for Wordpress sites, with added video and audio capabilities. 
+              Role-aware, customizable, and secure.
             </p>
 
             <div className="case-study-meta">
               <span>Role: Full-stack engineer</span>
-              <span>Stack: Node.js, React, JavaScript, WordPress</span>
+              <span>Stack: Node.js, React, JavaScript, Powershell, WordPress, PHP, HTML, CSS, Databases, Github</span>
               <span>Status: Active portfolio case study</span>
             </div>
 
