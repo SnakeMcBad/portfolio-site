@@ -18,7 +18,7 @@ export default function CTASection() {
               </div>
 
               <div className="hero-actions">
-                <ButtonLink href="/case-studies/chatroom-plugin/">
+                <ButtonLink href="/projects/chatroom-plugin/">
                   Read case study
                 </ButtonLink>
                 <ButtonLink href="/contact/" variant="secondary">

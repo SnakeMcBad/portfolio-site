@@ -19,7 +19,7 @@ export const projects: Project[] = [
     description:
       "Built to support a custom community experience beyond off-the-shelf chat embeds. The project focuses on video/audio sharing, message rendering, permissions, moderation flows, security, and UI behavior.",
     tech: ["PHP", "React", "Node.js", "WordPress", "JavaScript", "CSS", "HTML"],
-    href: "/case-studies/chatroom-plugin/",
+    href: "/projects/chatroom-plugin/",
     featured: true,
     status: "Case Study",
   },

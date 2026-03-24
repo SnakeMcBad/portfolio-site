@@ -25,7 +25,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-actions">
-            <ButtonLink href="/case-studies/chatroom-plugin/">
+            <ButtonLink href="/projects/chatroom-plugin/">
               Communication Platform Project Breakdown
             </ButtonLink>
             <ButtonLink href="/projects/" variant="secondary">

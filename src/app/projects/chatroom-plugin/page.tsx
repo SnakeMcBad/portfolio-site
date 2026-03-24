@@ -29,57 +29,64 @@ export default function ChatroomCaseStudyPage() {
           </Reveal>
         </Container>
       </section>
-
+      <h3 style={{ textAlign: 'center'}}>Hover over individual sections for images, or view the Gallery!</h3>
       <section className="section">
         <Container>
           <div className="case-study-grid">
             <Reveal>
               <div className="case-study-panel">
-                <h3>The problem</h3>
+                <h3>What it is</h3>
                 <p>
-                  The goal was to create a richer community chat experience that felt
-                  integrated with the platform instead of bolted onto it. That meant
-                  handling real interface behavior, permissions, moderation controls,
-                  and message presentation in a way that supported the product rather
-                  than fighting it.
+                  What I built here is essentially a full-stack, real-time communication system designed to work inside a web environment. 
+                  The core of the project combines a custom Node.js signaling server, a WebRTC-based SFU powered by Jitsi, and a 
+                  WordPress-integrated frontend plugin that handles chat, presence, and user interaction. 
+                  The system supports persistent messaging, direct messaging rooms, and live audio/video sessions, 
+                  all tied together through a unified interface. Architecturally, this required separating concerns cleanly: 
+                  WordPress handles user identity and UI, Node.js manages real-time communication and signaling, and Jitsi handles media routing at scale.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.06}>
               <div className="case-study-panel">
-                <h3>Key constraints</h3>
-                <ul>
-                  <li>Needed to live inside a WordPress ecosystem</li>
-                  <li>Role-aware behavior for different user types</li>
-                  <li>Interactive message controls without a messy UI</li>
-                  <li>Blocked-user behavior had to remain understandable</li>
-                  <li>No public demo due to infrastructure and hosting cost tradeoffs</li>
-                </ul>
+                <h3>Key Constraints</h3>
+                <p>
+                  One of the biggest constraints was infrastructure. Initially, I used a cloud VM environment that introduced 
+                  limitations in networking and performance. The setup was time consuming and it couldn’t reliably host more 
+                  than 2 users without significant performance issues. I had to develop a deeper understanding of how networking actually works 
+                  end-to-end: DNS resolution, TCP handshakes, reverse proxy behavior, and how cloud providers enforce security rules. 
+                  Moving from a VM to a physical Ubuntu server was a deliberate decision to gain more control over the environment, reduce 
+                  latency, and remove hidden constraints imposed by managed infrastructure. 
+                </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="case-study-panel">
-                <h3>What I built</h3>
+                <h3>Engineering Challenges - 1</h3>
                 <p>
-                  The project centered on real-time messaging patterns, grouped message
-                  rendering, edit and delete controls, moderation-aware UI, and the
-                  logic needed to keep behavior coherent when user state changed.
+                  A major engineering challenge was orchestrating multiple services to behave as a single system. 
+                  Nginx became the central routing layer, terminating SSL and directing traffic to either the Jitsi 
+                  SFU or the Node.js signaling server based on subdomains and paths. Getting this right required careful 
+                  handling of WebSocket upgrades, proxy headers, and service isolation. Debugging 502 errors, 
+                  failed TLS handshakes, and unreachable ports forced me to rely on tools such as `tcpdump`, `ss`, 
+                  and `iptables` to trace packet flow and identify where communication was breaking down. This required 
+                  a gained understanding of how each layer of the stack interacts under real-world conditions.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.14}>
               <div className="case-study-panel">
-                <h3>Engineering challenges</h3>
-                <ul>
-                  <li>Keeping grouped message rendering consistent</li>
-                  <li>Handling blocked users without breaking interaction patterns</li>
-                  <li>Managing permission-based controls cleanly</li>
-                  <li>Balancing richer UX with maintainable plugin structure</li>
-                  <li>Making tradeoffs under practical deployment constraints</li>
-                </ul>
+                <h3>Engineering challenges - 2</h3>
+                <p>
+                  Another challenge was ensuring real-time reliability and scalability. WebRTC systems are sensitive to latency, 
+                  bandwidth, and connection stability, so I had to choose an SFU approach rather than peer-to-peer. Integrating 
+                  Jitsi via Docker introduced its own complexity, especially around port mapping, UDP traffic for media, and aligning 
+                  it with my reverse proxy setup. At the same time, I had to make sure the Node.js server could handle concurrent 
+                  connections efficiently, manage sessions securely, and support features like direct messaging rooms without degrading 
+                  performance. This required thoughtful separation of responsibilities and an awareness of how each component scales under load.
+                </p>
               </div>
             </Reveal>
 
@@ -87,9 +94,11 @@ export default function ChatroomCaseStudyPage() {
               <div className="case-study-panel">
                 <h3>What this project demonstrates</h3>
                 <p>
-                  This is not just a chat UI. It shows how I think through product
-                  boundaries, user behavior, state complexity, and maintainable
-                  implementation inside a constrained environment.
+                  What this project ultimately demonstrates is not just the ability to write code, but the ability to design and operate 
+                  a complete real-time system. While working on this project, I gained an understanding of backend architecture, networking, 
+                  DevOps practices, and frontend integration working together toward a cohesive product. More importantly, it reflects the ability 
+                  to diagnose complex, multi-layered problems and systematically resolve them. This is the kind of work that moves beyond tutorials or 
+                  isolated features and into building production-capable systems, where reliability, performance, and maintainability all matter.
                 </p>
               </div>
             </Reveal>
@@ -97,17 +106,23 @@ export default function ChatroomCaseStudyPage() {
             <Reveal delay={0.22}>
               <div className="case-study-panel">
                 <h3>Next steps</h3>
-                <ul>
-                  <li>Deeper visual walkthroughs and screenshots</li>
-                  <li>Architecture diagrams for frontend and backend flow</li>
-                  <li>Expanded write-up on auth and moderation decisions</li>
-                  <li>Scalability roadmap for future real-time growth</li>
-                  <li>Accessibility and testing improvements</li>
-                </ul>
+                <p>
+                  What this project ultimately demonstrates is not just the ability to write code, but the ability to design and operate 
+                  a complete real-time system. It shows an understanding of backend architecture, networking, DevOps practices, and 
+                  frontend integration working together toward a cohesive product. More importantly, it reflects the ability to diagnose 
+                  complex, multi-layered problems and systematically resolve them. This is the kind of work that moves beyond tutorials or 
+                  isolated features and into building production-capable systems, where reliability, performance, and maintainability all matter.
+                </p>
               </div>
             </Reveal>
           </div>
+          <div className="hero-actions" style={{ marginTop: "1.5rem" }}>
+            <ButtonLink href="/projects/" variant="secondary">
+              Back to projects
+            </ButtonLink>
+          </div>
         </Container>
+        
       </section>
     </>
   );

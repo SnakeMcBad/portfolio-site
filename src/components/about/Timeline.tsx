@@ -1,7 +1,7 @@
 "use client";
 
 import { timeline } from "@/data/timeline";
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 import { useRef } from "react";
 
 export default function Timeline() {
@@ -9,7 +9,7 @@ export default function Timeline() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 80%", "end 20%"],
+    offset: ["start 75%", "end 90%"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -18,15 +18,13 @@ export default function Timeline() {
     mass: 0.35,
   });
 
-  const lineHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <section className="timeline-section" ref={sectionRef}>
       <div className="timeline-container">
         <div className="timeline-line-track" />
         <motion.div
           className="timeline-line-fill"
-          style={{ height: lineHeight }}
+          style={{ scaleY: smoothProgress }}
         />
 
         <div className="timeline-line-start" />

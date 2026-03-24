@@ -448,112 +448,241 @@ main {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
-  backdrop-filter: blur(14px);
-  background: linear-gradient(135deg, rgba(13, 42, 69, 0.94), rgba(22, 58, 92, 0.9));
+  z-index: 100;
+  min-height: 84px;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+  background: linear-gradient(135deg, rgba(13, 42, 69, 0.96), rgba(22, 58, 92, 0.92));
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.navbar.scrolled {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .navbar-inner {
-  display: flex;
+  min-height: 84px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  min-height: 78px;
   gap: 1rem;
+  position: relative;
 }
 
 .brand {
+  grid-column: 1;
+  justify-self: start;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #ffffff;
+  white-space: nowrap;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.brand-hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .nav-links {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease,
+    border-radius 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-links-floating {
+  justify-self: center;
+  grid-column: 2;
+  padding: 0.6rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 28px rgba(22, 32, 43, 0.12);
 }
 
 .nav-link {
   position: relative;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  padding: 0.35rem 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 700;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.15rem;
-  width: 100%;
-  height: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: linear-gradient(90deg, #d9e6f0, #a9bfd1);
-  transition: transform 0.2s ease;
+  display: none;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  transform: scaleX(1);
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.nav-links-floating .nav-link {
+  background: rgba(13, 42, 69, 0.55);
+  color: #ffffff;
+}
+
+.nav-links-floating .nav-link:hover,
+.nav-links-floating .nav-link.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--navy);
+  box-shadow: 0 6px 18px rgba(22, 32, 43, 0.12);
+}
+
+.navbar:not(.scrolled) .nav-link.active {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .page-hero {
-  padding: 6rem 0 2rem;
+  padding: 6.5rem 0 2.5rem;
+  position: relative;
 }
 
 .page-hero h1 {
   margin: 0 0 1rem;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .page-hero p {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0;
   color: var(--text-soft);
-  line-height: 1.8;
+  line-height: 1.75;
   font-size: 1.05rem;
+}
+
+.page-hero::after {
+  content: "";
+  display: block;
+  margin-top: 2.5rem;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(63, 100, 134, 0.2),
+    transparent
+  );
 }
 
 .simple-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
+/* layout for Phone screensizes */
 @media (max-width: 900px) {
   .hero-grid,
   .case-study-grid,
-  .simple-grid,
   .cta-row {
-    grid-template-columns: 1fr;
     display: grid;
-  }
-
-  .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .project-card {
-    grid-column: auto;
+  .navbar {
+    min-height: 92px;
   }
 
   .navbar-inner {
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem 0;
+    min-height: 92px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-items: center;
+    padding: 0.9rem 0;
+    gap: 0.75rem;
+    transition:
+      min-height 0.25s ease,
+      padding 0.25s ease,
+      gap 0.25s ease;
   }
 
-  .nav-links {
+  .brand {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    text-align: center;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav-links,
+  .nav-links-floating {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 100%;
+    transition:
+      transform 0.25s ease,
+      padding 0.25s ease,
+      gap 0.25s ease;
+  }
+
+  .nav-links-floating {
+    margin-left: 0;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* THIS is the key mobile fix */
+  .navbar.scrolled {
+    min-height: 64px;
+  }
+
+  .navbar.scrolled .navbar-inner {
+    min-height: 64px;
+    grid-template-rows: auto;
+    padding: 0.45rem 0;
+    gap: 0;
+  }
+
+  .navbar.scrolled .brand {
+    display: none;
+  }
+
+  .navbar.scrolled .nav-links,
+  .navbar.scrolled .nav-links-floating {
+    grid-row: 1;
+    transform: translateY(0);
   }
 
   .footer-inner {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }
 
@@ -566,6 +695,13 @@ main {
     font-size: 2.8rem;
   }
 
+  .hero-copy p,
+  .page-hero p,
+  .section-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
   .hero-actions,
   .project-actions {
     flex-direction: column;
@@ -575,11 +711,43 @@ main {
   .button-link {
     width: 100%;
   }
-}
 
+  .nav-links,
+  .nav-links-floating {
+    width: 100%;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .navbar.scrolled .nav-links,
+  .navbar.scrolled .nav-links-floating {
+    width: auto;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.62rem 0.82rem;
+    font-size: 0.94rem;
+  }
+
+  .project-card,
+  .timeline-content,
+  .hero-panel,
+  .about-panel,
+  .contact-panel,
+  .cta-panel,
+  .case-study-panel {
+    padding: 1.2rem;
+    border-radius: 22px;
+  }
+}
 
 /* timeline */
 .timeline-container {
+  --timeline-top: 0.75rem;
+  --timeline-bottom: 0.75rem;
+
   position: relative;
   width: min(1000px, 100%);
   margin: 0 auto;
@@ -589,9 +757,9 @@ main {
 .timeline-line-track {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: var(--timeline-top);
+  bottom: var(--timeline-bottom);
   width: 4px;
-  height: 68%;
   transform: translateX(-50%);
   background: rgba(63, 100, 134, 0.26);
   border-radius: 999px;
@@ -601,9 +769,11 @@ main {
 .timeline-line-fill {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: var(--timeline-top);
+  bottom: var(--timeline-bottom);
   width: 4px;
-  transform: translateX(-50%);
+  margin-left: -2px;
+  transform-origin: top center;
   background: linear-gradient(
     to bottom,
     var(--accent-2),
@@ -614,14 +784,26 @@ main {
   z-index: 1;
 }
 
-
+.timeline-line-start,
+.timeline-line-end {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--accent-3);
+  border: 3px solid #ffffff;
+  box-shadow: 0 6px 16px rgba(22, 32, 43, 0.12);
+  z-index: 3;
+}
 
 .timeline-line-start {
-  top: 0;
+  top: calc(var(--timeline-top) - 6px);
 }
 
 .timeline-line-end {
-  bottom: 18rem;
+  bottom: calc(var(--timeline-bottom) - 6px);
 }
 
 .timeline-item {
@@ -693,13 +875,18 @@ main {
   margin-bottom: 0rem;
   line-height: 1.4;
 }
+
 @media (max-width: 768px) {
+  .timeline-container {
+    --timeline-top: 0.75rem;
+    --timeline-bottom: 0.75rem;
+  }
+
   .timeline-line-track,
   .timeline-line-fill,
   .timeline-line-start,
   .timeline-line-end {
     left: 10px;
-    height: 70%
   }
 
   .timeline-item {
