@@ -107,11 +107,11 @@ export default function ChatroomCaseStudyPage() {
               <div className="case-study-panel">
                 <h3>Next steps</h3>
                 <p>
-                  What this project ultimately demonstrates is not just the ability to write code, but the ability to design and operate 
-                  a complete real-time system. It shows an understanding of backend architecture, networking, DevOps practices, and 
-                  frontend integration working together toward a cohesive product. More importantly, it reflects the ability to diagnose 
-                  complex, multi-layered problems and systematically resolve them. This is the kind of work that moves beyond tutorials or 
-                  isolated features and into building production-capable systems, where reliability, performance, and maintainability all matter.
+                  This project will eventually be available for commercial sale on the Wordpress and Peepso plugin platforms.
+                  The remaining features that I wish to work on include: <br></br>* Using AI to add child-safety attachment analysis.
+                  <br></br>* Adding individual video/audio streaming to Direct Message rooms. <br></br>* Add stream quality option selection.
+                  <br></br> * Add platform-specific integration that make the experience more seemless. <br></br>
+                  * Take suggestions from real users on additional features.
                 </p>
               </div>
             </Reveal>
