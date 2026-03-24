@@ -444,7 +444,60 @@ main {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.95rem;
 }
+/* CASE STUDY STUFF */
+.case-study-helper-text {
+  text-align: center;
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
 
+.case-study-tab-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.case-study-tab {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.82rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ffffff;
+  background: rgba(13, 42, 69, 0.55);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.case-study-tab:hover {
+  transform: translateY(-1px);
+}
+
+.case-study-tab.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--navy);
+  box-shadow: 0 6px 18px rgba(22, 32, 43, 0.12);
+}
+
+@media (max-width: 640px) {
+  .case-study-tab-row {
+    gap: 0.6rem;
+  }
+
+  .case-study-tab {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+/* NAV BAR STUFF */
 .navbar {
   position: sticky;
   top: 0;
@@ -658,7 +711,7 @@ main {
     max-width: 100%;
   }
 
-  /* THIS is the key mobile fix */
+  /*  Mobile Display */
   .navbar.scrolled {
     min-height: 64px;
   }
