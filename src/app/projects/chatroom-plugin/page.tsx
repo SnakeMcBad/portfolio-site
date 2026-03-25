@@ -253,9 +253,11 @@ export default function ChatroomCaseStudyPage() {
 
               <Reveal delay={0.22}>
                 <div className="case-study-panel">
-                  <h3>Place Holder</h3>
+                  <h3>Check it out on GitHub</h3>
                   <p>
-                    Place Holder
+                    README.md Only!
+                    <br />
+                    GitHub Link
                   </p>
                 </div>
               </Reveal>
