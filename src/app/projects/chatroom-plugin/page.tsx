@@ -217,47 +217,71 @@ export default function ChatroomCaseStudyPage() {
 
               <Reveal delay={0.06}>
                 <div className="case-study-panel">
-                  <h3>Place Holder</h3>
+                  <h3>Attachment System</h3>
                   <p>
-                    Place Holder
+                    Attachments are uploaded through the WordPress REST API, with added functionality to preview images before 
+                    sending, multi-file uploads, and media rendering inside messages and message chunks. Uploads are authenticated 
+                    using WordPress nonces and integrated into message payloads. Admins  also have added settings for accepted file 
+                    types based on roles, this way, if a site owner wants only paid members to be able to upload photos, he can 
+                    dictate that in the settings, or he can remove attachment options completely if he plans to have a text only 
+                    chatroom experience. Customizability is key to a good experience!
                   </p>
                 </div>
               </Reveal>
 
               <Reveal delay={0.1}>
                 <div className="case-study-panel">
-                  <h3>Place holder</h3>
+                  <h3>Client State Management</h3>
                   <p>
-                    Place Holder
+                    The application maintains a client-side state model including:
+                    <br />   - Active room
+                    <br />   - Message cache
+                    <br />   - Online users
+                    <br />   - Blocked users (localStorage)
+                    <br />   - Mention counters
+                    <br />This allows fast UI updates without full re-renders.
+
                   </p>
                 </div>
               </Reveal>
 
               <Reveal delay={0.14}>
                 <div className="case-study-panel">
-                  <h3>Place Holder</h3>
+                  <h3>UI / UX Design</h3>
                   <p>
-                    Place Holder
+                    The interface was designed to mimic modern messaging platforms:
+                    <br />- Context menus (right-click interactions)
+                    <br />- Inline attachment previews
+                    <br />- Mention dropdown autocomplete
+                    <br />- Room-based navigation
+                    <br />- Notification badges
+                    <br />All UI behavior is implemented using JavaScript without external frameworks.
                   </p>
                 </div>
               </Reveal>
 
               <Reveal delay={0.18}>
                 <div className="case-study-panel">
-                  <h3>Place Holder</h3>
+                  <h3>Mention System</h3>
                   <p>
-                    Place Holder
+                    The plugin detects mentions via pattern matching, allowing users to auto-fill queries of available usernames. 
+                    It improves the experience by not enforcing “exact match” issues certain search queries have, since autofilling 
+                    will allow users to more or less tag users based on a portion of their username. After a user is tagged, the 
+                    message containing the tag will be highlighted to the tagged user. Each user has their own individually tracked 
+                    mentions per room, and those tracked mentions display notifications across rooms.
                   </p>
                 </div>
               </Reveal>
 
               <Reveal delay={0.22}>
                 <div className="case-study-panel">
-                  <h3>Check it out on GitHub</h3>
+                  <h3>Blocked Users</h3>
                   <p>
-                    README.md Only!
-                    <br />
-                    GitHub Link
+                    The plugin adds a “Block” button for the chatroom only. Blocked users' messages are not removed, but collapsed 
+                    into a UI element: "X blocked messages — Show." Clicking expands the messages, preserving conversation context 
+                    while respecting user preferences. To do this, I added consecutive message chunk detection, dynamic DOM grouping, 
+                    and client-side persistence of blocked users, allowing users to block a user once. This gives users flexibility 
+                    without asking for consistent feedback.
                   </p>
                 </div>
               </Reveal>
@@ -265,6 +289,9 @@ export default function ChatroomCaseStudyPage() {
           )}
 
           <div className="hero-actions" style={{ marginTop: "1.5rem" }}>
+            <ButtonLink href="/projects/" variant="secondary">
+              View the README.md
+            </ButtonLink>
             <ButtonLink href="/projects/" variant="secondary">
               Back to projects
             </ButtonLink>
