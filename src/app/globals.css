@@ -1018,39 +1018,49 @@ main {
   }
 }
 
-/* STANDALONE CAROUSEL */
+/* STANDALONE CAROUSEL — horizontal marquee */
 .carousel-section {
-  position: relative;
   height: 420px;
   background: #07090d;
   overflow: hidden;
 }
 
-.carousel-slide {
-  position: absolute;
-  inset: 0;
+.carousel-track {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #07090d;
-  opacity: 0;
-  transition: opacity 1.2s ease;
+  width: max-content;
+  animation: carousel-scroll 55s linear infinite;
 }
 
-.carousel-slide.active {
-  opacity: 1;
+.carousel-section:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  padding-right: 6px;
 }
 
 .carousel-slide-img {
   height: 100%;
   width: auto;
-  max-width: 100%;
   display: block;
 }
 
 @media (max-width: 640px) {
   .carousel-section {
-    height: 280px;
+    height: 260px;
+  }
+
+  .carousel-slide {
+    height: 260px;
   }
 }
 
@@ -1154,16 +1164,21 @@ main {
 
 .gallery-image-frame {
   flex: 1;
+  height: 500px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-image {
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
   display: block;
 }
 
@@ -1226,6 +1241,10 @@ main {
 
   .gallery-main {
     gap: 0.85rem;
+  }
+
+  .gallery-image-frame {
+    height: 300px;
   }
 }
 
