@@ -6,8 +6,6 @@ import Reveal from "@/components/shared/Reveal";
 import ButtonLink from "@/components/shared/ButtonLink";
 import HeroCarousel from "@/components/shared/HeroCarousel";
 
-import HeroCarousel from "@/components/shared/HeroCarousel";
-
 type TabKey = "case-study" | "key-features" | "gallery";
 
 const galleryItems = [
