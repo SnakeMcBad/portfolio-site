@@ -18,7 +18,7 @@ export const projects: Project[] = [
       "A complete community-driven social media platform with real-time feeds, groups, blogging, notifications, and live chat. Built end-to-end with a focus on feature depth, performance, and user experience.",
     description:
       "Designed and developed a production social network covering community feeds, groups, rich blog authoring, real-time chat with mentions, and a notification system — all engineered with custom feature work layered over a WordPress + PeepSo foundation.",
-    tech: ["WordPress", "PHP", "JavaScript", "Node.js", "React", "MySQL", "CSS", "HTML"],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth.js", "Socket.io", "LiveKit", "Tailwind CSS"],
     href: "/projects/social-media-platform/",
     featured: true,
     status: "In Progress",

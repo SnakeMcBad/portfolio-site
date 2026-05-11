@@ -47,19 +47,19 @@ export default function Hero() {
             <div className="hero-metrics">
               <div className="metric-card">
                 <strong>Frontend</strong>
-                <span>JavaScript, React, CSS, HTML — custom UI across all features</span>
+                <span>Next.js App Router, TypeScript, Tailwind CSS, next-themes</span>
               </div>
               <div className="metric-card">
                 <strong>Backend</strong>
-                <span>PHP, Node.js, MySQL, WordPress, PeepSo</span>
+                <span>PostgreSQL, Prisma ORM, NextAuth.js v5, Node.js</span>
               </div>
               <div className="metric-card">
-                <strong>Features</strong>
-                <span>Feeds, Groups, Blog, Real-Time Chat, Notifications</span>
+                <strong>Real-Time</strong>
+                <span>Socket.io (chat) + LiveKit (voice/video rooms)</span>
               </div>
               <div className="metric-card">
                 <strong>Focus</strong>
-                <span>Feature depth, UX polish, scalable architecture</span>
+                <span>Full-stack product engineering, admin systems, tiered membership</span>
               </div>
             </div>
           </div>
