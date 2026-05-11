@@ -1164,16 +1164,21 @@ main {
 
 .gallery-image-frame {
   flex: 1;
+  height: 500px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery-image {
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
   display: block;
 }
 
@@ -1236,6 +1241,10 @@ main {
 
   .gallery-main {
     gap: 0.85rem;
+  }
+
+  .gallery-image-frame {
+    height: 300px;
   }
 }
 
