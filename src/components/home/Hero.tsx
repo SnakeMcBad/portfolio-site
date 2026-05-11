@@ -1,13 +1,11 @@
 import Container from "@/components/layout/Container";
 import ButtonLink from "@/components/shared/ButtonLink";
 import Reveal from "@/components/shared/Reveal";
-import HeroCarousel from "@/components/shared/HeroCarousel";
 
 export default function Hero() {
   return (
     <section className="hero">
-      <HeroCarousel />
-      <Container className="hero-grid hero-above-carousel">
+      <Container className="hero-grid">
         <Reveal className="hero-copy">
           <span className="hero-kicker">Software Engineer • 5 years of experience</span>
           <span></span><span className="hero-kicker">A.S. in Computer Science • B.S. in Progress</span>

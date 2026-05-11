@@ -26,16 +26,12 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <div className="hero-carousel" aria-hidden="true">
+    <div className="carousel-section" aria-hidden="true">
       {carouselImages.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          className={`hero-carousel-img${i === current ? " visible" : ""}`}
-        />
+        <div key={src} className={`carousel-slide${i === current ? " active" : ""}`}>
+          <img src={src} alt="" className="carousel-slide-img" />
+        </div>
       ))}
-      <div className="hero-carousel-overlay" />
     </div>
   );
 }

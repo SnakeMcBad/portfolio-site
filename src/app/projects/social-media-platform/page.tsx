@@ -6,6 +6,8 @@ import Reveal from "@/components/shared/Reveal";
 import ButtonLink from "@/components/shared/ButtonLink";
 import HeroCarousel from "@/components/shared/HeroCarousel";
 
+import HeroCarousel from "@/components/shared/HeroCarousel";
+
 type TabKey = "case-study" | "key-features" | "gallery";
 
 const galleryItems = [
@@ -75,8 +77,7 @@ export default function SocialMediaPlatformPage() {
   return (
     <>
       <section className="case-study-hero">
-        <HeroCarousel />
-        <Container className="case-study-hero-content">
+        <Container>
           <Reveal>
             <span className="eyebrow">Case Study</span>
             <h1 className="section-title">
@@ -104,6 +105,8 @@ export default function SocialMediaPlatformPage() {
           </Reveal>
         </Container>
       </section>
+
+      <HeroCarousel />
 
       <section className="section-tight">
         <Container>
