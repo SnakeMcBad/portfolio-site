@@ -24,10 +24,10 @@ const features: Feature[] = [
     ],
     headline: "Community Posts & Real-Time Feed",
     description:
-      "A shared activity feed where members post text, images, and videos with configurable visibility. The compose modal supports up to four media attachments, @mention autocomplete, and Public or Friends-only visibility per post. Image posts enter an admin approval queue before going live; text-only posts publish immediately. The feed runs in two modes: Community (all approved posts) and My Feed (personalized by follows and friends activity).",
+      "A shared activity feed where members post text, images, and videos with configurable visibility. The compose modal supports up to ten media attachments, @mention autocomplete, and Public or Friends-only visibility per post. Image posts enter an admin approval queue before going live; text-only posts publish immediately. The feed runs in two modes: Community (all approved posts) and My Feed (personalized by follows and friends activity).",
     points: [
       "@mention extraction and autocomplete built into the composer",
-      "Up to 4 image/video attachments per post with preview grid",
+      "Up to 10 image/video attachments per post with preview grid",
       "Replies, reposts, and quote posts with full threading",
       "Approval queue for image posts; text-only auto-approves",
     ],
