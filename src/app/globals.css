@@ -381,18 +381,6 @@ main {
 
 .case-study-hero {
   padding: 7rem 0 3rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.case-study-hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-above-carousel {
-  position: relative;
-  z-index: 1;
 }
 
 .case-study-meta {
@@ -914,18 +902,29 @@ main {
 
 .showcase-image-wrap {
   position: relative;
+  height: 360px;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
   background: var(--surface-2);
   cursor: zoom-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .showcase-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
+}
+
+@media (max-width: 640px) {
+  .showcase-image-wrap {
+    height: 260px;
+  }
 }
 
 .showcase-expand-hint {
@@ -1019,33 +1018,40 @@ main {
   }
 }
 
-/* HERO CAROUSEL */
-.hero-carousel {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+/* STANDALONE CAROUSEL */
+.carousel-section {
+  position: relative;
+  height: 420px;
+  background: #07090d;
   overflow: hidden;
-  pointer-events: none;
 }
 
-.hero-carousel-img {
+.carousel-slide {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07090d;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 
-.hero-carousel-img.visible {
+.carousel-slide.active {
   opacity: 1;
 }
 
-.hero-carousel-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(248, 251, 254, 0.84);
+.carousel-slide-img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .carousel-section {
+    height: 280px;
+  }
 }
 
 /* LIGHTBOX */
