@@ -1,7 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
 const carouselImages = [
   "/features/Posts1.png",
   "/features/ComposeLayer.png",
@@ -15,23 +11,18 @@ const carouselImages = [
   "/features/adminactions.png",
 ];
 
+const doubled = [...carouselImages, ...carouselImages];
+
 export default function HeroCarousel() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % carouselImages.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="carousel-section" aria-hidden="true">
-      {carouselImages.map((src, i) => (
-        <div key={src} className={`carousel-slide${i === current ? " active" : ""}`}>
-          <img src={src} alt="" className="carousel-slide-img" />
-        </div>
-      ))}
+      <div className="carousel-track">
+        {doubled.map((src, i) => (
+          <div key={i} className="carousel-slide">
+            <img src={src} alt="" className="carousel-slide-img" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
