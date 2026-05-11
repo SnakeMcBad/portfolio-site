@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "@/components/layout/Container";
 import Reveal from "@/components/shared/Reveal";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -90,7 +90,7 @@ const features: Feature[] = [
     ],
     headline: "Aggregated Notification System",
     description:
-      "Tracks five activity types — likes, replies, reposts, quote posts, and follows — and surfaces them in a persistent dropdown panel accessible from any page. Multiple actors on the same item are aggregated into a single entry (e.g. \"Jane and 2 others liked your post\") rather than flooding the list. Desktop shows an unread count badge on the bell icon; mobile shows a red badge over the profile avatar. Opening the panel auto-marks all notifications as read and clears the badge. The unread count polls every 30 seconds.",
+      "Tracks five activity types — likes, replies, reposts, quote posts, and follows — and surfaces them in a persistent dropdown panel accessible from any page. Multiple actors on the same item are aggregated into a single entry (e.g. \"Jane and 2 others liked your post\") rather than flooding the list. Desktop shows an unread count badge on the bell icon; mobile shows a red badge over the profile avatar. Opening the panel auto-marks all notifications as read and clears the badge.",
     points: [
       "Five notification types: Like, Reply, Repost, Quote, Follow",
       "Actor aggregation prevents notification list flooding",
@@ -106,7 +106,7 @@ const features: Feature[] = [
     ],
     headline: "Member Profiles & Social Graph",
     description:
-      "Each member has a public profile page with five tabs: About (bio, location, relationship status), Posts, Media, Blog, and Groups. Avatar and banner photo uploads enter an admin approval queue — the admin panel shows the pending image side-by-side with the currently approved version. The social graph supports one-way follows (followed members' activity surfaces in My Feed) and bidirectional friend requests with accept/reject flow, with Friends-only content visible only to mutual friends.",
+      "Each member has a public profile page with five tabs: About (bio, location, relationship status), Posts, Media, Blog, and Groups. Avatar and banner photo uploads enter an admin approval queue — the admin panel shows the pending image side-by-side with the currently approved version. The social graph supports one-way follows (followed members' activity surfaces in My Feed) and bidirectional friend requests with accept/reject flow.",
     points: [
       "Five-tab profile layout: About, Posts, Media, Blog, Groups",
       "Avatar and banner uploads with admin side-by-side review",
@@ -134,7 +134,39 @@ const features: Feature[] = [
 
 export default function FeatureShowcase() {
   const [activeId, setActiveId] = useState(features[0].id);
+  const [imgIdx, setImgIdx] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   const active = features.find((f) => f.id === activeId) ?? features[0];
+  const safeIdx = Math.min(imgIdx, active.images.length - 1);
+  const currentImage = active.images[safeIdx];
+
+  function selectTab(id: string) {
+    setActiveId(id);
+    setImgIdx(0);
+    setLightboxOpen(false);
+  }
+
+  function prevImg(e?: React.MouseEvent) {
+    e?.stopPropagation();
+    setImgIdx((i) => (i - 1 + active.images.length) % active.images.length);
+  }
+
+  function nextImg(e?: React.MouseEvent) {
+    e?.stopPropagation();
+    setImgIdx((i) => (i + 1) % active.images.length);
+  }
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") setImgIdx((i) => (i - 1 + active.images.length) % active.images.length);
+      if (e.key === "ArrowRight") setImgIdx((i) => (i + 1) % active.images.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxOpen, active.images.length]);
 
   return (
     <section className="section feature-showcase-section">
@@ -156,7 +188,7 @@ export default function FeatureShowcase() {
                 role="tab"
                 aria-selected={activeId === f.id}
                 className={`showcase-tab ${activeId === f.id ? "active" : ""}`}
-                onClick={() => setActiveId(f.id)}
+                onClick={() => selectTab(f.id)}
               >
                 {f.label}
               </button>
@@ -175,16 +207,105 @@ export default function FeatureShowcase() {
                 ))}
               </ul>
             </div>
-            <div className="showcase-image-stack">
-              {active.images.map(({ src, alt }) => (
-                <div key={src} className="showcase-image-wrap">
-                  <img src={src} alt={alt} className="showcase-image" />
+
+            <div className="showcase-image-viewer">
+              <div
+                className="showcase-image-wrap"
+                onClick={() => setLightboxOpen(true)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setLightboxOpen(true)}
+                aria-label="View image fullscreen"
+              >
+                <img
+                  src={currentImage.src}
+                  alt={currentImage.alt}
+                  className="showcase-image"
+                />
+                <span className="showcase-expand-hint">Click to expand</span>
+              </div>
+
+              {active.images.length > 1 && (
+                <div className="showcase-image-nav">
+                  <button
+                    type="button"
+                    className="img-nav-btn"
+                    onClick={prevImg}
+                    aria-label="Previous image"
+                  >
+                    ‹
+                  </button>
+                  <span className="img-nav-counter">
+                    {safeIdx + 1} / {active.images.length}
+                  </span>
+                  <button
+                    type="button"
+                    className="img-nav-btn"
+                    onClick={nextImg}
+                    aria-label="Next image"
+                  >
+                    ›
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </Reveal>
       </Container>
+
+      {lightboxOpen && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image lightbox"
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+
+          {active.images.length > 1 && (
+            <button
+              type="button"
+              className="lightbox-nav lightbox-prev"
+              onClick={prevImg}
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+          )}
+
+          <img
+            src={currentImage.src}
+            alt={currentImage.alt}
+            className="lightbox-image"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {active.images.length > 1 && (
+            <button
+              type="button"
+              className="lightbox-nav lightbox-next"
+              onClick={nextImg}
+              aria-label="Next image"
+            >
+              ›
+            </button>
+          )}
+
+          {active.images.length > 1 && (
+            <div className="lightbox-counter">
+              {safeIdx + 1} / {active.images.length}
+            </div>
+          )}
+        </div>
+      )}
     </section>
   );
 }
