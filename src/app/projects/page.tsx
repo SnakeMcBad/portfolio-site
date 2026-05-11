@@ -11,8 +11,9 @@ export default function ProjectsPage() {
           <Reveal>
             <h1>Projects</h1>
             <p>
-              A growing collection of work focused on interactive UI, frontend
-              systems, architecture, and practical engineering tradeoffs.
+              A collection of full-stack, frontend, and infrastructure work — spanning social
+              platforms, communication systems, and developer tooling, with an emphasis on
+              practical implementation and end-to-end ownership.
             </p>
           </Reveal>
         </Container>

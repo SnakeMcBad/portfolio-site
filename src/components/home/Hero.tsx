@@ -15,18 +15,19 @@ export default function Hero() {
             Alghanimi
           </h1>
           <p>
-            Results-driven software engineer with 5 years of experience in designing, automating, 
-            and optimizing systems using Next.js, Node.js, React, Python, and Powershell. Strong 
-            background in cloud-native development, infrastructure automation, and performance 
-            analysis, with hands-on expertise in AWS Services, MongoDB, Jenkins, and Git.  
+            Results-driven software engineer with 5 years of experience in designing, automating,
+            and optimizing systems using Next.js, Node.js, React, Python, and Powershell. Strong
+            background in cloud-native development, infrastructure automation, and performance
+            analysis, with hands-on expertise in AWS Services, MongoDB, Jenkins, and Git.
           </p>
           <p>
-            Check my projects below!
+            Currently building a full-featured social media platform from the ground up — feeds,
+            groups, blogging, live chat, and more.
           </p>
 
           <div className="hero-actions">
-            <ButtonLink href="/projects/chatroom-plugin/">
-              Communication Platform Project Breakdown
+            <ButtonLink href="/projects/social-media-platform/">
+              Social Media Platform Breakdown
             </ButtonLink>
             <ButtonLink href="/projects/" variant="secondary">
               Explore Projects
@@ -37,28 +38,28 @@ export default function Hero() {
         <Reveal delay={0.12}>
           <div className="hero-panel">
             <span className="hero-panel-label">Featured Project</span>
-            <h3>Custom Real-Time Chat, Audio, and Video Platform</h3>
+            <h3>Full-Stack Social Media Platform</h3>
             <p>
-              Built as a full-stack communication experience for the web, with work spanning
-              frontend interaction, backend logic, media features, and platform integration.
+              An end-to-end social network with community feeds, groups, blogs, real-time chat,
+              and a notification system — built with deep custom feature work throughout.
             </p>
 
             <div className="hero-metrics">
               <div className="metric-card">
-                <strong>Languages</strong>
-                <span>JavaScript, Node.js, PHP, HTML, CSS, PowerShell</span>
+                <strong>Frontend</strong>
+                <span>JavaScript, React, CSS, HTML — custom UI across all features</span>
               </div>
               <div className="metric-card">
                 <strong>Backend</strong>
-                <span>Node.js, MongoDB, Cloud integration, Encryption (TLS/SSL)</span>
+                <span>PHP, Node.js, MySQL, WordPress, PeepSo</span>
               </div>
               <div className="metric-card">
-                <strong>Development</strong>
-                <span>GitHub versioning, iterative debugging, feature refinement</span>
+                <strong>Features</strong>
+                <span>Feeds, Groups, Blog, Real-Time Chat, Notifications</span>
               </div>
               <div className="metric-card">
-                <strong>Project Focus</strong>
-                <span>Live communication, sizable media handling, cleaner user experience</span>
+                <strong>Focus</strong>
+                <span>Feature depth, UX polish, scalable architecture</span>
               </div>
             </div>
           </div>
