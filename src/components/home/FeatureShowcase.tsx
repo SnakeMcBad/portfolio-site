@@ -8,7 +8,7 @@ import SectionHeading from "@/components/shared/SectionHeading";
 type Feature = {
   id: string;
   label: string;
-  image: string;
+  images: { src: string; alt: string }[];
   headline: string;
   description: string;
   points: string[];
@@ -18,71 +18,116 @@ const features: Feature[] = [
   {
     id: "feed",
     label: "Community Feed",
-    image: "/features/feed.png",
-    headline: "Social Feed & Post Creation",
-    description:
-      "The heart of the platform — a real-time activity feed where members share posts, photos, and videos. The post composer supports @mention tagging, visibility controls (Public, Friends, Private), and rich media attachments, all surfaced in a clean, scrollable timeline.",
-    points: [
-      "@username autocomplete with mention tagging",
-      "Photo and video attachment support",
-      "Public, Friends, and Private visibility per post",
-      "Real-time feed updates without full page reload",
+    images: [
+      { src: "/features/Posts1.png", alt: "Community feed showing member posts" },
+      { src: "/features/ComposeLayer.png", alt: "Post compose modal with media and mention support" },
     ],
-  },
-  {
-    id: "notifications",
-    label: "Notifications",
-    image: "/features/notifications.png",
-    headline: "Real-Time Notification System",
+    headline: "Community Posts & Real-Time Feed",
     description:
-      "A persistent notification panel that surfaces likes, follows, comments, and mentions in real time. Notifications are grouped and timestamped, giving users a clear activity log without noise — and a quick path back to the relevant content.",
+      "A shared activity feed where members post text, images, and videos with configurable visibility. The compose modal supports up to four media attachments, @mention autocomplete, and Public or Friends-only visibility per post. Image posts enter an admin approval queue before going live; text-only posts publish immediately. The feed runs in two modes: Community (all approved posts) and My Feed (personalized by follows and friends activity).",
     points: [
-      "Live like, follow, and comment notifications",
-      "Grouped and timestamped notification entries",
-      "Dropdown panel accessible from any page",
-      "Unread badge count on the notification icon",
+      "@mention extraction and autocomplete built into the composer",
+      "Up to 4 image/video attachments per post with preview grid",
+      "Replies, reposts, and quote posts with full threading",
+      "Approval queue for image posts; text-only auto-approves",
     ],
   },
   {
     id: "blog",
     label: "Blog",
-    image: "/features/blog.png",
-    headline: "Member Blogging & Comments",
+    images: [
+      { src: "/features/Blogs1.png", alt: "Blog listing page with post cards" },
+      { src: "/features/Blogs2.png", alt: "Blog post detail with comments and author sidebar" },
+    ],
+    headline: "Rich-Content Blog Publishing",
     description:
-      "A full publishing system where members can write blog posts, build a following, and engage through comments. Each post page includes an author sidebar with post/follower counts, a media gallery, and a threaded comment section for back-and-forth conversation.",
+      "A full publishing system with a block-based rich content editor supporting text paragraphs and inline images with optional captions. Each post carries a cover image, category (Travel, Wellness, Community, Guides, Philosophy), emoji tag, estimated read time, and excerpt. New blog posts enter an admin review queue before going public, and admins can mark posts as featured — featured posts appear in a hero position at the top of the blog listing.",
     points: [
-      "Rich text blog authoring with image support",
-      "Author profile sidebar with stats",
-      "Gallery panel for post-related media",
-      "Threaded comment section with post comment flow",
+      "Block-based rich editor with inline images and captions",
+      "Category, emoji tag, cover image, and estimated read time",
+      "Featured post flag with hero placement on listing page",
+      "Likes and threaded comments with engagement counters",
     ],
   },
   {
     id: "groups",
     label: "Groups",
-    image: "/features/groups.png",
-    headline: "Community Groups",
+    images: [
+      { src: "/features/Groups1.png", alt: "Groups discovery page with group cards" },
+      { src: "/features/Groups2.png", alt: "Group detail page with feed and member sidebar" },
+    ],
+    headline: "Sub-Communities with Role-Based Access",
     description:
-      "Members can create and join topic-based groups with configurable visibility and membership rules — Public, Invite-Only Public, or Private. Each group has its own feed, media gallery, member list, and about section, giving communities a dedicated home.",
+      "Members create and join topic-based groups with three privacy tiers: Public (open join), Invite-Only Visible (visible in search, requires approval to join), and Invite-Only Secret (hidden from non-members entirely). Each group has its own feed, member directory, and admin settings panel. Group admins can toggle comments, new posts, likes, and member-initiated invites on or off. Name and description changes go through a site-wide admin approval queue before applying.",
     points: [
-      "Public, Invite-Only, and Private group types",
-      "Per-group feed, media, members, and about tabs",
-      "Recent media sidebar for quick browsing",
-      "Group admin settings and membership controls",
+      "Three privacy levels: Public, Invite-Only Visible, Invite-Only Secret",
+      "Three member roles: ADMIN, MOD, MEMBER with distinct capabilities",
+      "Per-group toggles: comments, new posts, likes, member invites",
+      "Group creation enters admin approval queue before going live",
     ],
   },
   {
     id: "chat",
-    label: "Real-Time Chat",
-    image: "/features/chat.png",
-    headline: "Live Chat Lobby",
+    label: "Chat",
+    images: [
+      { src: "/features/chatroom1.png", alt: "Real-time chat lobby with messages and online users" },
+    ],
+    headline: "Live Chat with Voice and Video",
     description:
-      "A persistent, real-time chat system with lobby and room support. Users can send messages, share emoji reactions, @mention others, and edit their own messages. The chat renders a full history and shows online presence, creating a live community feel.",
+      "A multi-room chat system powered by Socket.io for text messaging and LiveKit for voice and video sessions. Rooms range from open lobby channels to Pro-tier-exclusive lounges. Messages are persisted to the database and the last 100 load on room entry. Members can send image and file attachments, see who is typing, and edit or delete their own messages. LiveKit provides token-based voice/video with microphone and camera toggles, active speaker detection, and adaptive bitrate streaming.",
     points: [
-      "Real-time message delivery with Socket.IO",
-      "@mention support with user autocomplete",
-      "Emoji reactions and inline emoji picker",
-      "Message editing with edited indicator",
+      "Socket.io messaging with database persistence and 100-message history",
+      "LiveKit voice/video with token auth and adaptive streaming",
+      "Typing indicators, message editing, and file/image attachments",
+      "Pro-tier-gated lounge room; online presence sidebar per room",
+    ],
+  },
+  {
+    id: "notifications",
+    label: "Notifications",
+    images: [
+      { src: "/features/Notifications.png", alt: "Notification dropdown panel showing recent activity" },
+    ],
+    headline: "Aggregated Notification System",
+    description:
+      "Tracks five activity types — likes, replies, reposts, quote posts, and follows — and surfaces them in a persistent dropdown panel accessible from any page. Multiple actors on the same item are aggregated into a single entry (e.g. \"Jane and 2 others liked your post\") rather than flooding the list. Desktop shows an unread count badge on the bell icon; mobile shows a red badge over the profile avatar. Opening the panel auto-marks all notifications as read and clears the badge. The unread count polls every 30 seconds.",
+    points: [
+      "Five notification types: Like, Reply, Repost, Quote, Follow",
+      "Actor aggregation prevents notification list flooding",
+      "Desktop bell + mobile avatar badge with live unread count",
+      "Auto-mark-as-read on panel open; 30-second background polling",
+    ],
+  },
+  {
+    id: "profiles",
+    label: "Profiles",
+    images: [
+      { src: "/features/Profile.png", alt: "User profile page with tabs for posts, media, blog, and groups" },
+    ],
+    headline: "Member Profiles & Social Graph",
+    description:
+      "Each member has a public profile page with five tabs: About (bio, location, relationship status), Posts, Media, Blog, and Groups. Avatar and banner photo uploads enter an admin approval queue — the admin panel shows the pending image side-by-side with the currently approved version. The social graph supports one-way follows (followed members' activity surfaces in My Feed) and bidirectional friend requests with accept/reject flow, with Friends-only content visible only to mutual friends.",
+    points: [
+      "Five-tab profile layout: About, Posts, Media, Blog, Groups",
+      "Avatar and banner uploads with admin side-by-side review",
+      "One-way follows and bidirectional friend requests",
+      "Friends-only content visibility gate across feed and posts",
+    ],
+  },
+  {
+    id: "admin",
+    label: "Admin Panel",
+    images: [
+      { src: "/features/adminactions.png", alt: "Admin panel showing moderation actions and queues" },
+    ],
+    headline: "Content Moderation & Admin Panel",
+    description:
+      "A full admin panel accessible only to ADMIN-role users, with a sticky left sidebar navigating ten moderation queues: community posts, blog posts, testimonials, groups, group posts, group edits, reports, and avatar/banner uploads. Every approve or deny action requires a confirmation modal before executing to prevent accidental moderation. Reports can be dismissed (leaving the post live) or escalated to delete the post, which simultaneously resolves all associated reports.",
+    points: [
+      "Ten moderation queues covering all user-generated content types",
+      "Confirmation modal required for every approve and deny action",
+      "Report resolution: dismiss or delete-post (resolves all linked reports)",
+      "Side-by-side avatar/banner comparison in the upload review modal",
     ],
   },
 ];
@@ -98,7 +143,7 @@ export default function FeatureShowcase() {
           <SectionHeading
             eyebrow="Platform Features"
             title="A full social media experience"
-            description="Five major feature packs built and refined across the platform — each one a real engineering surface with its own design, state management, and backend integration."
+            description="Seven major feature packs built and refined across the platform — each one a real engineering surface with its own UI, state management, real-time layer, and backend integration."
           />
         </Reveal>
 
@@ -130,12 +175,12 @@ export default function FeatureShowcase() {
                 ))}
               </ul>
             </div>
-            <div className="showcase-image-wrap">
-              <img
-                src={active.image}
-                alt={`${active.headline} screenshot`}
-                className="showcase-image"
-              />
+            <div className="showcase-image-stack">
+              {active.images.map(({ src, alt }) => (
+                <div key={src} className="showcase-image-wrap">
+                  <img src={src} alt={alt} className="showcase-image" />
+                </div>
+              ))}
             </div>
           </div>
         </Reveal>
