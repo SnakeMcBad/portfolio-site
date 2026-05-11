@@ -12,15 +12,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "social-media-platform",
+    title: "Full-Stack Social Media Platform",
+    summary:
+      "A complete community-driven social media platform with real-time feeds, groups, blogging, notifications, and live chat. Built end-to-end with a focus on feature depth, performance, and user experience.",
+    description:
+      "Designed and developed a production social network covering community feeds, groups, rich blog authoring, real-time chat with mentions, and a notification system — all engineered with custom feature work layered over a WordPress + PeepSo foundation.",
+    tech: ["WordPress", "PHP", "JavaScript", "Node.js", "React", "MySQL", "CSS", "HTML"],
+    href: "/projects/social-media-platform/",
+    featured: true,
+    status: "In Progress",
+  },
+  {
     slug: "chatroom-plugin",
     title: "Text, Audio, and Video Communications Plugin",
     summary:
-      "A full-stack communication platform in the form of a plugin. Used for Wordpress sites, with added video and audio capabilities. Role-aware, customizable, and secure.",
+      "A full-stack communication platform in the form of a plugin. Used for WordPress sites, with added video and audio capabilities. Role-aware, customizable, and secure.",
     description:
       "Built to support a custom community experience beyond off-the-shelf chat embeds. The project focuses on video/audio sharing, message rendering, permissions, moderation flows, security, and UI behavior.",
     tech: ["PHP", "React", "Node.js", "WordPress", "JavaScript", "CSS", "HTML"],
     href: "/projects/chatroom-plugin/",
-    featured: true,
+    featured: false,
     status: "Case Study",
   },
   {
@@ -32,7 +44,7 @@ export const projects: Project[] = [
       "Designed to showcase engineering projects through polished interaction, strong case study writing, and a scalable frontend structure.",
     tech: ["Next.js", "TypeScript", "Motion", "CSS", "HTML", "Powershell"],
     href: "/",
-    featured: true,
+    featured: false,
     status: "Live",
   },
 ];
